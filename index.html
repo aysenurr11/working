@@ -6,13 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue.js denemesi</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="First">
         <h2>İsim: {{name }}</h2>
         <p>Meslek: {{job}}</p>
-        <p>Yas: {{age}}</p>
+
+        <!-- Degisken üzerinde islem -->
+        <button v-on:click="age++">Yasimi arttir</button>
+        <button v-on:click="age--">Yasimi azalt</button>
+
+
+        <p>Yasim: {{age}}</p>
+
+        <!-- Fonksiyon üzerinde işlem -->
+
+        <button v-on:click="ekle"> Yaşıı arttır fonksiyon ile</button>
+        <button v-on:click="azalt">Yasımı azalt fonksiyon ile</button>
+        <button v-on:click="ekle10(10)">Yaşımı 10 arttır</button>
+        <button v-on:click="cikar10(10)">yaşımı 10 azalt</button>
+        <p>Yasim: {{ age }}</p>
+
+        <div id="canvas" v-on:mousemove="updateXY">{{x}},{{y}}</div>
         <hr>
         <p>Şapka Var mı?: {{giyim.sapka}}</p>
         <p>Pantolon Tipi : ? {{giyim.pantolon}}</p>
