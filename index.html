@@ -10,7 +10,23 @@
 
 <body>
     <div id="First">
-        <h2>{{ ilkDegisken }}</h2>
+        <h2>İsim: {{name }}</h2>
+        <p>Meslek: {{job}}</p>
+        <p>Yas: {{age}}</p>
+        <hr>
+        <p>Şapka Var mı?: {{giyim.sapka}}</p>
+        <p>Pantolon Tipi : ? {{giyim.pantolon}}</p>
+        <p>T-shirt var mı ? :{{giyim.tshirt}}</p>
+        <hr>
+        <p>Özellik 1: {{yetenek[0]}}</p>
+        <p>Özellik 2: {{yetenek[1]}}</p>
+        <p>{{ hesapla("Sena", "geceler")}}</p>
+        <p>{{name}}</p>
+        <p>{{topla()}}</p>
+        <p>Website : <a v-bind:href="website">Benim web sitem</a></p>
+        <a :href="website">V-bind : : ile belirtildi</a>
+        <input type="text" :value="name">
+        <p v-html="websiteTag"></p>
     </div>
 
 </body>
