@@ -11,39 +11,95 @@
 
 <body>
     <div id="First">
-        <h2>İsim: {{name }}</h2>
-        <p>Meslek: {{job}}</p>
+        <h2>İsim: {{ name }}</h2>
+        <p>Meslek: {{ job }}</p>
+        <h1>Klavye etkinlikleri</h1>
+        <label for="name">İsim: </label>
+        <input type="text" id="name" v-on:keyup.enter="isimYakala">
+
+        <label for="age">Yas:</label>
+        <input type="text" id="age" v-on:keyup.alt.enter="yasYakala">
+
+        <!-- önce inputa yazıp değişkene atıp oradan okumak (çift yönde veri işleme ) -->
+        <label for="name">İsim: </label>
+        <input type="text" v-model="names">
+        <p>{{ names }}</p>
+
+        <label for="age">Yas:</label>
+        <input type="text" v-model="ages">
+        <p>{{ ages }}</p>
 
         <!-- Degisken üzerinde islem -->
         <button v-on:click="age++">Yasimi arttir</button>
         <button v-on:click="age--">Yasimi azalt</button>
 
+        <button v-on:click="c++">C' ye 1 ekle</button> <!-- Removed '.once' here -->
+        <p>C: {{ c }}</p>
+        <button v-on:click="d++">D' ye 1 ekle</button>
+        <p>D: {{ d }}</p>
 
-        <p>Yasim: {{age}}</p>
+        <!-- Corrected usage of computed properties (no parentheses) -->
+        <p>Yaş + C = {{ cyeEkle }}</p>
+        <p>Yaş + D= {{ dyeEkle }}</p>
 
         <!-- Fonksiyon üzerinde işlem -->
-
-        <button v-on:click="ekle"> Yaşıı arttır fonksiyon ile</button>
+        <button v-on:click="ekle"> Yaşımı arttır fonksiyon ile</button>
         <button v-on:click="azalt">Yasımı azalt fonksiyon ile</button>
         <button v-on:click="ekle10(10)">Yaşımı 10 arttır</button>
         <button v-on:click="cikar10(10)">yaşımı 10 azalt</button>
         <p>Yasim: {{ age }}</p>
 
-        <div id="canvas" v-on:mousemove="updateXY">{{x}},{{y}}</div>
+        <div id="canvas" v-on:mousemove="updateXY">{{ x }},{{ y }}</div>
+        <a v-on:click.prevent="tıkla" href="https://tubitak.com">Benim Sayfa</a>
+
         <hr>
-        <p>Şapka Var mı?: {{giyim.sapka}}</p>
-        <p>Pantolon Tipi : ? {{giyim.pantolon}}</p>
-        <p>T-shirt var mı ? :{{giyim.tshirt}}</p>
+        <p>Şapka Var mı?: {{ giyim.sapka }}</p>
+        <p>Pantolon Tipi : ? {{ giyim.pantolon }}</p>
+        <p>T-shirt var mı ? :{{ giyim.tshirt }}</p>
         <hr>
-        <p>Özellik 1: {{yetenek[0]}}</p>
-        <p>Özellik 2: {{yetenek[1]}}</p>
+        <p>Özellik 1: {{ yetenek[0] }}</p>
+        <p>Özellik 2: {{ yetenek[1] }}</p>
         <p>{{ hesapla("Sena", "geceler")}}</p>
-        <p>{{name}}</p>
-        <p>{{topla()}}</p>
+        <p>{{ name }}</p>
+        <p>{{ topla() }}</p>
         <p>Website : <a v-bind:href="website">Benim web sitem</a></p>
         <a :href="website">V-bind : : ile belirtildi</a>
         <input type="text" :value="name">
         <p v-html="websiteTag"></p>
+
+        <h1>Dinamik CSS</h1>
+
+        <div v-bind:class="{red: true, blue: true}"></div>
+        <div v-on:click="aktiflik=!aktiflik" v-bind:class="{aktif:aktiflik}">
+            <span>BU alanın içeriğidir</span>
+        </div>
+
+        <button v-on:click="ekstra=!ekstra">Ekstra'yı Değiştir </button>
+        <button v-on:click="aktiflik=!aktiflik">Aktifliği Değiştir</button>
+
+        <div v-bind:class="degisikligiAlgila">
+            <span>
+                BU alanın içeriğidir ama farklı
+            </span>
+        </div>
+        <h1>Şart işlemleri</h1>
+        <button v-on:click="error=!error">Hata Toggle ı</button>
+        <button v-on:click="success=!success">Başarılı işlem toogleı</button>
+        <p v-if="error">İşlem hata verdi</p>
+        <p v-else-if="success">İşlem başarılı</p>
+        <!-- <p v-show="error">İşlem hata verdi</p>
+        <p v-show="success">İşlem başarılı</p> -->
+
+        <h1>Döngü işlemleri</h1>
+        <ul>
+            <li v-for="karakter in karakterler">
+                {{karakter}}
+            </li>
+        </ul>
+        <ul>
+            <li v-for="ozellik in ozellikler">{{ozellik.name}} - {{ozellik.age}}
+            </li>
+        </ul>
     </div>
 
 </body>

@@ -1,11 +1,12 @@
-
 const { createApp } = Vue
 createApp({
     data() {
         return {
-            name: 'Ayse Nur ',
+            name: 'Ayse Nur',
             a: 3,
             b: 4,
+            c: 0,
+            d: 0,
             job: 'Engineer',
             website: "https://gokhunyayla.com",
             websiteTag: '<a href="https://webtangular.com">BU da  Html tag eklenerek benim sitem</a>',
@@ -17,7 +18,21 @@ createApp({
                 pantolon: 'Kot',
                 tshirt: false,
             },
-            yetenek: ["Sürücü", "Yazılımcı", "Boksör", "Yüzücü"]
+            yetenek: ["Sürücü", "Yazılımcı", "Boksör", "Yüzücü"],
+            names: '',
+            ages: '',
+            aktiflik: true,
+            ekstra: false,
+            error: false,
+            success: false,
+            karakterler: ["Adnan", "Bihter", "Behlül", "Matmazel"],
+            ozellikler: [
+                { name: "Adnan", age: 55 },
+                { name: "Bihter", age: 40 },
+                { name: "Behlül", age: 20 },
+                { name: "Matmazel", age: 50 },
+
+            ]
         }
     },
     methods: {
@@ -42,9 +57,33 @@ createApp({
             this.age -= yil;
         },
         updateXY(event) {
-            console.log(event);
             this.x = event.offsetX;
-            this.Y = event.offsetY;
+            this.y = event.offsetY;
+        },
+        tıkla: function () {
+            alert("Buna tıkladım")
+        },
+
+        isimYakala: function () {
+            console.log("isim alanına bir şey yazdın")
+        },
+        yasYakala: function () {
+            console.log("yaş alanına bir şey yazdın")
         }
-    }
+
+    },
+    computed: {
+        cyeEkle: function () {
+            return this.c + this.age;
+        },
+        dyeEkle: function () {
+            return this.d + this.age;
+        },
+        degisikligiAlgila: function () {
+            return {
+                aktif: this.aktiflik,
+                ekstra: this.ekstra
+            }
+        },
+    },
 }).mount("#First");
