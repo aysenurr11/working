@@ -10,7 +10,13 @@
 </head>
 
 <body>
-    <div id="First">
+    <div id="app-one">
+        <input type="text" ref="icerik">
+        <button v-on:click="readRefs">Ref 'leri gör</button>
+        <div ref="içerik2">mrb dünya</div>
+        <eleman></eleman>
+        <h1>{{title}}</h1>
+        <p>{{greet}}</p>
         <h2>İsim: {{ name }}</h2>
         <p>Meslek: {{ job }}</p>
         <h1>Klavye etkinlikleri</h1>
@@ -91,17 +97,45 @@
         <p v-show="success">İşlem başarılı</p> -->
 
         <h1>Döngü işlemleri</h1>
-        <ul>
+        <!-- <ul>
             <li v-for="karakter in karakterler">
                 {{karakter}}
             </li>
         </ul>
         <ul>
-            <li v-for="ozellik in ozellikler">{{ozellik.name}} - {{ozellik.age}}
+            <li v-for="(ozellik, index) in ozellikler">{{index}}.{{ozellik.name}} - {{ozellik.age}}
             </li>
-        </ul>
+        </ul> -->
+        <!-- <div v-for="(ozellik,index) in ozellikler">
+            <h3>{{index}}. {{ozellik.name}}</h3>
+            <p>{{ozellik.age}}</p>
+        </div> -->
+
+        <!-- 
+        belli özellikleri dön  -->
+
+
+        <!-- <template v-for="(ozellik,index) in ozellikler">
+            <div>
+                <h3>{{index}}. {{ozellik.name}}</h3>
+                <p>{{ozellik.age}}</p>
+            </div>
+        </template> -->
+
+        <div v-for="(ozellik, index) in ozellikler">
+            <template v-for="(val,key) in ozellik">
+                <p>{{key }}:{{ val}}</p>
+            </template>
+
+        </div>
+
     </div>
 
+    <div id="app-two">
+        <h1>{{ title}}</h1>
+        <p>{{greet}}</p>
+        <button v-on:click="changeTitle">App1 'in baslıgını değiştir</button>
+    </div>
 </body>
 <script src="app.js"></script>
 
